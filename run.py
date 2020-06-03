@@ -291,8 +291,7 @@ app.config['MONGO_URI'] = 'mongodb://localhost:27017/mongologin'
 
 mongo = PyMongo(app)
 
-aws = zohoapi.get_aws_token()
-zoho_token = zohoapi.get_s3_file(aws['AWS_KEY'],aws['SECRET_KEY'], 'zoho_token.json')
+zoho_token = zohoapi.get_s3_file(os.environ['AWS_KEY'],os.environ['SECRET_KEY'], 'zoho_token.json')
 z = zohoapi.BooksZohoApi(zoho_token['BOOKS_KEY'])
 
 app.add_url_rule('/', view_func=table.index)
