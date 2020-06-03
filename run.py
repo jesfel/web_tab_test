@@ -12,14 +12,15 @@ from dateutil import parser
 import datetime as dt
 import numpy as np
 from pandas.io.json import json_normalize
+import os
 
 class SquareZoho:
     def __init__(self, van_driver):
         self.aws = zohoapi.get_aws_token()
-        self.square = zohoapi.get_s3_file(self.aws['AWS_KEY'],self.aws['SECRET_KEY'], 'square_dict2.json')
+        self.square = zohoapi.get_s3_file(self.os.eviron['AWS_KEY'],self.os.environ['SECRET_KEY'], 'square_dict2.json')
         self.square_df = json_normalize(self.square)
         self.square_df['item_id'] = self.square_df['item_id'].astype(str)
-        self.zoho_token = zohoapi.get_s3_file(self.aws['AWS_KEY'],self.aws['SECRET_KEY'], 'zoho_token.json')
+        self.zoho_token = zohoapi.get_s3_file(self.os.environ['AWS_KEY'],self.os.environ['SECRET_KEY'], 'zoho_token.json')
         self.van = van_driver
         self.vans = {
             'mauricio':'BSPQ7V58MGQSX',
