@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container">
+  <div class="row justify-content-center align-items-center mb-4">
+    <h1>Table Test Title</h1>
+  </div>
+  <div class="row justify-content-center align-items-center">
+    {% for table in tables%}
+      {{ table }}
+    {% endfor%}
+  </div>
+</div>
+{% endblock %}

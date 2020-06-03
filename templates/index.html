@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <!-- <ul class="flashes"> -->
+      {% for message in messages %}
+      <center><div class="alert alert-success alert-dismissible fade show" id="home-alert" role="alert">{{ message }}</div></center>
+      {% endfor %}
+    <!-- </ul> -->
+  {% endif %}
+{% endwith %}
+
+<div class="container-fluid" id="back">
+  <div class="row justify-content-center align-items-center mb-4">
+    <h1>Add new item</h1>
+  </div>
+  <div class="row row-main justify-content-center align-items-center">
+    <form method=POST action="{{ url_for('new_item') }}">
+
+      <div class="form-group row">
+        <!-- <label for="inputSKU" class="col-sm-12 col-form-label">SKU</label> -->
+        <div class="col-sm-12">
+          <input type="text" name="sku" class="form-control" id="inputSKU" placeholder="SKU">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+        <select class="custom-select my-1 mr-sm-2" name="unit" id="inputUnit">
+               <option value="" disabled>Choose unit of measurement</option>
+               <option value="Ea">Each</option>
+               <option value="Dz">Dozen</option>
+               <option value="Box">Case</option>
+               <option value="pallet">Pallet</option>
+           </select>
+           </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+        <select class="custom-select my-1 mr-sm-2" name="brand" id="inputBrand">
+               <option value="" disabled selected>Choose a brand</option>
+               <option value="3M Fall Protection">3M Fall Protection</option>
+               <option value="MSA">MSA</option>
+               <option value="FallTech">FallTech</option>
+               <option value="Radians">Radians</option>
+           </select>
+           </div>
+      </div>
+
+      <div class="form-group row">
+        <!-- <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label> -->
+        <div class="col-sm-12">
+          <textarea class="form-control" id="inputName" name="description" placeholder="Item name"></textarea>
+        </div>
+      </div>
+
+      <fieldset class="form-group">
+        <div class="row">
+          <legend class="col-form-label col-sm-12 pt-0">Item type:</legend>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="itemType" id="gridRadios1" value="goods" checked>
+              <label class="form-check-label" for="gridRadios1">
+                Goods
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="itemType" id="gridRadios2" value="service">
+              <label class="form-check-label" for="gridRadios2">
+                Service
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-group row">
+        <!-- <label for="inputSKU" class="col-sm-12 col-form-label">SKU</label> -->
+        <div class="col-sm-12">
+          <input type="number" name="cost" step="0.01" min="0.01" class="form-control" id="inputCost" placeholder="Cost">
+        </div>
+      </div>
+
+      <fieldset class="form-group">
+        <div class="row">
+          <legend class="col-form-label col-sm-12 pt-0">Deviated:</legend>
+          <div class="col-sm-12">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="radioDev" id="gridRadios3" value="0" checked>
+              <label class="form-check-label" for="gridRadios3">
+                No
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="radioDev" id="gridRadios4" value="1">
+              <label class="form-check-label" for="gridRadios4">
+                Yes
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
