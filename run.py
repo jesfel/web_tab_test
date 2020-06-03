@@ -398,4 +398,4 @@ def new_item():
 
 if __name__ == '__main__':
     app.secret_key = 'mysecret'
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
