@@ -398,4 +398,5 @@ def new_item():
 
 if __name__ == '__main__':
     app.secret_key = 'mysecret'
+    app.config['SESSION_TYPE'] = 'filesystem'
     app.run(host='0.0.0.0')
