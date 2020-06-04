@@ -288,6 +288,8 @@ app = Flask(__name__)
 
 app.config['MONGO_DBNAME'] = 'mongologin'
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/mongologin'
+app.secret_key = os.urandom(24)
+app.config['SESSION_TYPE'] = 'filesystem'
 
 mongo = PyMongo(app)
 
@@ -397,6 +399,4 @@ def new_item():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.secret_key = 'mysecret'
-    app.config['SESSION_TYPE'] = 'filesystem'
     app.run(host='0.0.0.0')
